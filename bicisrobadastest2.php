@@ -21,9 +21,7 @@
 
 		$acentos=mysqli_query($conexion, "SET NAMES 'utf8'");
 
-		$sql = "SELECT anu_marca, anu_model, anu_ubicacio_robatori FROM anunci WHERE anu_marca = '$marca'";
-
-		//$result = mysql_query ($sql);
+		$sql = "SELECT anu_id, anu_titol, anu_data_anunci, anu_data_robatori, anu_ubicacio_robatori, anu_descripcio_robatori, anu_marca, anu_model, anu_color, anu_antiguitat, anu_descripcio, anu_numero_serie, anu_foto, anu_compensacio  FROM anunci WHERE anu_marca = '$marca'";
 
 		if (!$resultado = $mysqli->query($sql)) {
     	// ¡Oh, no! La consulta falló. 
@@ -45,26 +43,14 @@
     	exit;
 }
 
-		echo "<table border='1'><tr><td>Marca</td><td>Modelo</td><td>Ubicacion</td>
+		echo "<table border='1'><tr><td>ID</td><td>Titulo</td><td>Fecha de anuncio</td><td>Fecha del robo</td><td>Ubicacion del robo</td><td>Descripcion del robo</td><td>Marca</td><td>Modelo</td><td>Color</td><td>Antigüedad de la bici</td><td>Descripcion</td><td>numero de serie</td><td>Foto</td><td>Compensacion</td>
          </tr><tr>";
-	  while ($row = mysql_fetch_row($resultado)){
+	  while ($row = mysqli_fetch_row($resultado)){
                 echo "<td>".$row[0]."</td><td>".$row[1]."</td>
-              <td>".$row[2]."</td>";
+              <td>".$row[2]."</td><td>".$row[3]."</td><td>".$row[4]."</td><td>".$row[5]."</td><td>".$row[6]."</td><td>".$row[7]."</td><td>".$row[8]."</td><td>".$row[9]."</td><td>".$row[10]."</td><td>".$row[11]."</td><td>".$row[12]."</td><td>".$row[13]."</td>";
    }
    echo "</tr></table>";
-		/*if(mysqli_num_rows($resultados)>0){
-					while($producto = mysqli_fetch_array($resultados)){
-						echo "marca: $producto[anu_marca]<br/>";
-						echo "model: $producto[anu_model]<br/>";
-						echo "ciudad: $producto[anu_ciudad]<br/>";
-						//echo "Precio: $producto[pro_precio]<br/><br/>";
-					}
-				} else {
-					echo "No hay productos que mostrar";*/
-		//$sql = "SELECT anu_marca, anu_model, anu_ubicacio_robatori FROM anunci ORDER BY rand() LIMIT 5";
-		//$bici = $resultado->fetch_assoc();
-		//echo "A veces veo a " . $bici['$marca'] . " " . $bici['$modelo'] . " en la TV.";
-
+	
 			}
 			
 		?>
