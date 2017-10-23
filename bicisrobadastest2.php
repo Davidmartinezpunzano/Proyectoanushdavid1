@@ -22,8 +22,8 @@
 
 		$acentos=mysqli_query($conexion, "SET NAMES 'utf8'");
 
-		$sql = "SELECT anu_id, anu_titol, anu_data_anunci, anu_data_robatori, anu_ubicacio_robatori, anu_descripcio_robatori, anu_marca, anu_model, anu_color, anu_antiguitat, anu_descripcio, anu_numero_serie, anu_foto, anu_compensacio  FROM anunci WHERE anu_marca = '$marca' and anu_model = '$model' and anu_ubicacio_robatori = '$ciudad' and anu_color = '$color'";
-
+		//$sql = "SELECT anu_id, anu_titol, anu_data_anunci, anu_data_robatori, anu_ubicacio_robatori, anu_descripcio_robatori, anu_marca, anu_model, anu_color, anu_antiguitat, anu_descripcio, anu_numero_serie, anu_foto, anu_compensacio  FROM anunci WHERE anu_marca = '$marca' and anu_model = '$model' and anu_ubicacio_robatori = '$ciudad' and anu_color = '$color'";
+    $sql = "SELECT * FROM anunci WHERE anu_marca like '%$marca%' and anu_model like '%$model%' and anu_ubicacio_robatori like '%$ciudad%' and anu_color like '%$color%'";
 				  
 		
 
@@ -40,7 +40,7 @@
     	echo "Error: " . $mysqli->error . "\n";
     	exit;
 }
-		if ($resultado->num_rows === 0) {
+		if ($resultado->num_rows == 0) {
     	// ¡Oh, no ha filas! Unas veces es lo previsto, pero otras
     	// no. Nosotros decidimos. En este caso, ¿podría haber sido
     	// actor_id demasiado grande? 
@@ -73,4 +73,4 @@
 			
 
 
-		?>
+		
