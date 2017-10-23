@@ -1,4 +1,5 @@
 <?php
+
 	$model=$_REQUEST['modelo'];
 	$ciudad=$_REQUEST['ciudad'];
 	$marca=$_REQUEST['marca'];
@@ -21,7 +22,6 @@
 		}
 
 		$acentos=mysqli_query($conexion, "SET NAMES 'utf8'");
-
 		//$sql = "SELECT anu_id, anu_titol, anu_data_anunci, anu_data_robatori, anu_ubicacio_robatori, anu_descripcio_robatori, anu_marca, anu_model, anu_color, anu_antiguitat, anu_descripcio, anu_numero_serie, anu_foto, anu_compensacio  FROM anunci WHERE anu_marca = '$marca' and anu_model = '$model' and anu_ubicacio_robatori = '$ciudad' and anu_color = '$color'";
     $sql = "SELECT * FROM anunci WHERE anu_marca like '%$marca%' and anu_model like '%$model%' and anu_ubicacio_robatori like '%$ciudad%' and anu_color like '%$color%'";
 				  
@@ -61,7 +61,7 @@
          
 	  while ($row = mysqli_fetch_row($resultado)){
 	  			echo "<table border='1'><tr>";
-                echo "<td><img src='$row[12]'></td><td> $row[0] $row[1] $row[2] $row[3] $row[4] $row[5] Fecha: $row[6] $row[7] $row[8] $row[9] $row[10] $row[11] $row[13] </td>";
+                echo "<td><img src='$row[12]'></td><td><center> Id: $row[0] <br><br> Titulo del anuncio: $row[1] <br><br> Fecha del anuncio: $row[2] <br><br> Fecha del robo: $row[3] <br><br> Ubicacion del robo: $row[4] <br><br> Descripcion del robo: $row[5] <br><br> Marca: $row[6] <br> Modelo: $row[7] <br><br> Color: $row[8] <br><br> Antigüedad: $row[9] <br><br> Descripcion $row[10] <br><br> Numero de serie: $row[11] <br><br> Compensacion: $row[13]€ </center></td>";
               }
    
    echo "</tr></table>";
